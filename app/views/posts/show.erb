@@ -1,0 +1,13 @@
+<h3><%= @post.title %></h3>
+<img src="<%= @post.image_url %>" alt="<%= @post.title %>" height="200" width="200">
+<h6>Created At: <%= @post.created_at %></h6>
+<br><br>
+<p><%= @post.description %></p>
+<p>By: <%= @post.user.name %></p>
+
+<a href="/posts/<%= @post.id %>/edit">Edit Post</a>
+
+<form class="" action="/posts/<%= @post.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Delete Post">
+</form>
