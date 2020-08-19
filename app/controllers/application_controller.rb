@@ -36,6 +36,11 @@ class ApplicationController < Sinatra::Base
       erb :logout
     end 
 
+    # create an authorization helper for edit/delete
+    def authorized_to_edit?(post)
+      post.user == current_user
+    end 
+
     
   end 
 

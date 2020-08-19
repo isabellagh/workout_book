@@ -26,16 +26,16 @@
       <h3 style="color:green;"> <%= flash[:message] %></h3>
       <% end %>
 
-    <div class="nav">
+    <div class="topnav">
       <% if logged_in? %>
-        <a href="/">Home</a>
-        <a href="/logout">Log Out</a>
-        <a href="/posts">All Posts</a>
-        <a href="/my_posts">My Posts</a>
+        <a href="/">Home |</a>
+        <a href="/logout">Log Out |</a>
+        <a href="/posts">All Posts |</a>
+        <a href="/my_posts">My Posts |</a>
         <a href="/posts/new">Create a Post</a>
       <% end %>
     </div>
-
+    <br><br>
         <%= yield %>
 
       <footer class="branding">
@@ -50,4 +50,3 @@
     <![endif]-->
   </body>
 </html>
-s

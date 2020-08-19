@@ -57,7 +57,13 @@ class PostsController < ApplicationController
     # get route to render a edit form
     get '/posts/:id/edit' do
       @post = Post.find(params[:id])
-      erb :'/posts/edit'
+      if authorized_to_edit?(@post)
+        erb :'/posts/edit'
+      else 
+        #show an error message
+        flash[:error] = "Not authorized to edit that post!"
+        redirect "/posts"
+      end 
     end 
 
     # 'use Rack::MethodOverride' in 'config.ru'
