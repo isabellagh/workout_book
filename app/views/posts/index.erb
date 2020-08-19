@@ -1,12 +1,19 @@
-<h1>All Posts</h1>
+<h1 style="text-align:center">All Posts</h1>
 <br><br>
 <% @posts.each do |post| %> 
-  <h3><a href="/posts/<%= post.id %>"><%=post.title %></a></h3>
-  <img src="<%= post.image_url %>" alt="<%= post.title %>" height="350" width="300">
-  <p>Created At: <%= post.created_at %></p>
-  <em><%= post.description %></em>
-  <br><br>
-  <strong>By: <%= post.user.name %></p></strong>
+  <h3 style="text-align:center"><a href="/posts/<%= post.id %>"><%=post.title %></a></h3>
+  <img src="<%= post.image_url %>" alt="<%= post.title %>" class="center" height="350" width="300">
+  <style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+  <p style="text-align:center">Created At: <%= post.created_at %></p>
+  <p style="text-align:center"><em><%= post.description %></em></p>
+  <p style="text-align:center"><strong>By: <%= post.user.name %></strong></p>
   <br><br>
   <br><br>
 <% end %>
