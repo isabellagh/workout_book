@@ -48,6 +48,25 @@ class UsersController < ApplicationController
       erb :'/signup'
     end 
   
+     # UPDATE
+    # edit button that takes to the form 
+    # render an edit form
+    # patch method/route that will update the post
+    # create a link to edit form on post show page
+    # get route to render a edit form
+    get '/users/:id/editprofile' do
+      @user = User.find(params[:id])
+        erb :'/edit'
+    end 
+
+    # 'use Rack::MethodOverride' in 'config.ru'
+    # patch to send our params to and update new post (or resource)
+    patch '/users/:id' do
+      @user = User.find(params[:id])
+      @user.update(name: params[:name], image_url: params[:image_url],
+      bio: params[:bio])
+      redirect "/users/#{@user.id}"
+    end 
   
     # LOG OUT
     # get logout that clears the session hash

@@ -9,6 +9,7 @@ class PostsController < ApplicationController
         #render all posts
         erb :'posts/index'
       end
+
     
       # CREATE
       #render a form to create a new post
@@ -40,6 +41,7 @@ class PostsController < ApplicationController
           redirect "/posts/new" 
         end 
       end 
+
 
       #ORDER MATTERS
     # show route for a single post

@@ -1,0 +1,13 @@
+
+<h1>Edit Profile!</h1>
+
+<form class="" action="/users/<%= @user.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="">Name: </label>
+  <input type="string" name="name" value="<%= @user.name %>">
+  <label for="">Image_URL: </label>
+  <input type="text" name="image_url" value="<%= @user.image_url%>">
+  <label for="">Bio: </label>
+  <textarea name="bio" style="width:auto; height:auto;"><%= @user.bio %></textarea>
+  <input type="submit" name="" value="Submit">
+</form>

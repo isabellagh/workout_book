@@ -1,8 +1,21 @@
 
 <br><br>
-<h1><%= @user.name %></h1>
+<h1 style="text-align:center"><%= @user.name %></h1>
 
-<img src="<%= @user.image_url %>" alt="<%= @user.name %> profile photo" height="400" width="350">
+<img src="<%= @user.image_url %>" alt="<%= @user.name %>  profile photo" class="center" height="auto"; width="100%">
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
 <br><br>
-<p> Email: <%= @user.email %></p>
-<p> Bio: <%= @user.bio %></p>
+<p style="text-align:center"> Email: <%= @user.email %></p>
+<p style="text-align:center"> Bio: <%= @user.bio %></p>
+
+<a href="/users/<%= @user.id %>/editprofile">Edit Profile</a>
+
+
+
