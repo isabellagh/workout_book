@@ -5,8 +5,8 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-    enable :sessions #turns sessions on
-    set :session_secret, ENV['SESSION_SECRET'] #its an encryption key that will be used  to create a session_id
+    enable :sessions 
+    set :session_secret, ENV['SESSION_SECRET'] 
     register Sinatra::Flash
   end
 
@@ -36,12 +36,8 @@ class ApplicationController < Sinatra::Base
       erb :logout
     end 
 
-    # create an authorization helper for edit/delete
     def authorized_to_edit?(post)
       post.user == current_user
-    end 
-
-    
+    end    
   end 
-
 end
