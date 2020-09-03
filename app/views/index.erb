@@ -1,0 +1,18 @@
+<h1 style="text-align:center">All Profiles</h1>
+<br><br>
+<% @users.each do |user| %> 
+  <h3 style="text-align:center"><%=user.name %></h3>
+  <img src="<%= user.image_url %>" alt="<%= user.name %>" class="center" height="400" width="300">
+  <style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+  <p style="text-align:center"><em><%= user.email %></em></p>
+  <p style="text-align:center"><strong>Bio: <%= user.bio %></strong></p>
+  <br><br>
+  <br><br>
+<% end %>

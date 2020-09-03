@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     session[:user_id] = @user.id
     redirect "/users/#{@user.id}"
   end 
+
+  get '/profiles' do
+    @users = User.all
+    erb :index
+  end
   
   get '/login' do
     @users = User.all
@@ -49,4 +54,11 @@ class UsersController < ApplicationController
     session.clear
     redirect '/'
   end 
+
+  delete '/users/:id' do
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect '/'
+  end 
+
 end 

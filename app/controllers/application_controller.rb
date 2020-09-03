@@ -18,6 +18,15 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get "/signup" do
+    erb :signup
+  end
+
+  get "/logout" do
+    erb :logout
+  end 
+
+
   helpers do
 
     def logged_in?
@@ -26,14 +35,6 @@ class ApplicationController < Sinatra::Base
 
     def current_user
       User.find_by(id: session[:user_id])
-    end 
-
-    get "/signup" do
-      erb :signup
-    end
-
-    get "/logout" do
-      erb :logout
     end 
 
     def authorized_to_edit?(post)
