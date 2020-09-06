@@ -9,11 +9,13 @@
   <input type="text" name="image_url" value ="<%= @user.image_url%>">
   <label for="bio">Bio: </label>
   <textarea name="bio" style="width:auto; height:auto;"><%= @user.bio %></textarea>
-  <input type="submit" name="" value="Submit changes">
+  <input type="submit" name="" value="Edit profile">
   <br><br>
   <br><br>
 </form>
-<form class="" action="/users/<%= @user.id %>" method="post">
+
+<!--<form class="" action="/users/<%= @user.id %>" method="post"> 
   <input type="hidden" name="_method" value="delete">
-  <input type="submit" name="" value="Delete Profile">
-</form>
+  <input type="submit" name="" value="Delete profile">
+</form> -->
+

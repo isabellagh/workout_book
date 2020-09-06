@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end 
 
   get "/users/:id" do
-    @user = User.find_by(id: params[:id])
+    find_user
       erb :show
   end
 
@@ -41,15 +41,15 @@ class UsersController < ApplicationController
   get '/profiles' do
     @users = User.all
       erb :index
-  end
-  
-  get '/users/:id/editprofile' do
-    @user = User.find(params[:id])
-      erb :edit
   end 
 
+  get '/users/:id/editprofile' do
+    find_user
+      erb :edit
+  end
+
   patch '/users/:id' do
-    @user = User.find(params[:id])
+    find_user
     @user.update(name: params[:name], image_url: params[:image_url],
     bio: params[:bio])
       redirect "/users/#{@user.id}"
@@ -61,9 +61,15 @@ class UsersController < ApplicationController
   end 
 
   delete '/users/:id' do
-    @user = User.find(params[:id])
+    find_user
     @user.destroy
       redirect '/'
+  end 
+
+  private
+
+  def find_user
+    @user = User.find(params[:id])
   end 
 
 end 
