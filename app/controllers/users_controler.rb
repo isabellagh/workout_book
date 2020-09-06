@@ -19,9 +19,14 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    @user = User.create(params)
-    session[:user_id] = @user.id
-    redirect "/users/#{@user.id}"
+    if params[:name] != "" && params[:email] != "" && params[:password] != "" && params[:image_url] != "" && params[:bio] != ""
+      @user = User.create(params)
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.id}"
+    else
+      flash[:error] = "Please fill out all fields"
+      redirect '/signup'
+    end 
   end 
 
   get "/users/:id" do
@@ -30,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   get '/signup' do
-    erb :'/signup'
+    erb :signup
   end 
 
   get '/profiles' do
@@ -40,7 +45,7 @@ class UsersController < ApplicationController
   
   get '/users/:id/editprofile' do
     @user = User.find(params[:id])
-    erb :'/edit'
+    erb :edit
   end 
 
   patch '/users/:id' do
