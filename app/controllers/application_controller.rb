@@ -34,7 +34,7 @@ class ApplicationController < Sinatra::Base
     end 
 
     def current_user
-      User.find_by(id: session[:user_id])
+      @current_user ||= User.find_by(id: session[:user_id]) #memoization. if the current_user is populated is not getting the databse again
     end 
 
     def authorized_to_edit?(post)

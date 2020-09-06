@@ -1,17 +1,6 @@
 
 class UsersController < ApplicationController
 
-  post '/users' do
-    @user = User.create(params)
-    session[:user_id] = @user.id
-    redirect "/users/#{@user.id}"
-  end 
-
-  get '/profiles' do
-    @users = User.all
-    erb :index
-  end
-  
   get '/login' do
     @users = User.all
     erb :login
@@ -20,23 +9,34 @@ class UsersController < ApplicationController
   post '/login' do
     user = User.find_by(email: params[:email])
       if user && user.authenticate(params[:password])
-        session[:user_id] = user.id
+        session[:user_id] = user.id #assign to
         flash[:message] = "Welcome back, #{user.name}!"
         redirect "/users/#{user.id}"
       else 
         flash[:error] = "Invalid credentials, please try again!"
         redirect '/login'
       end 
-    end
-  
+  end
+
+  post '/users' do
+    @user = User.create(params)
+    session[:user_id] = @user.id
+    redirect "/users/#{@user.id}"
+  end 
+
   get "/users/:id" do
     @user = User.find_by(id: params[:id])
     erb :show
   end
-      
+
   get '/signup' do
     erb :'/signup'
   end 
+
+  get '/profiles' do
+    @users = User.all
+    erb :index
+  end
   
   get '/users/:id/editprofile' do
     @user = User.find(params[:id])

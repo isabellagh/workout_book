@@ -3,13 +3,17 @@
 
 <form class="" action="/users/<%= @user.id %>" method="post">
   <input type="hidden" name="_method" value="patch">
-  <label for="">Name: </label>
-  <input type="string" name="name" value="<%= @user.name %>">
-  <label for="">Image_URL: </label>
-  <input type="text" name="image_url" value="<%= @user.image_url%>">
-  <label for="">Bio: </label>
+  <label for="name">Name: </label>
+  <input type="string" name="name" value ="<%= @user.name %>">
+  <label for="image_url">Image_URL: </label>
+  <input type="text" name="image_url" value ="<%= @user.image_url%>">
+  <label for="bio">Bio: </label>
   <textarea name="bio" style="width:auto; height:auto;"><%= @user.bio %></textarea>
   <input type="submit" name="" value="Submit changes">
   <br><br>
   <br><br>
+</form>
+<form class="" action="/users/<%= @user.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="" value="Delete Profile">
 </form>
