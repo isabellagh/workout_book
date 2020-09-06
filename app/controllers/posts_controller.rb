@@ -26,12 +26,12 @@ class PostsController < ApplicationController
   end 
 
   get '/posts/:id' do
-    @post = Post.find(params[:id])
+    find_post
     erb :"/posts/show"
   end 
   
   get '/posts/:id/edit' do
-    @post = Post.find(params[:id])
+    find_post
     if authorized_to_edit?(@post)
       erb :'/posts/edit'
     else 
@@ -41,15 +41,22 @@ class PostsController < ApplicationController
   end 
 
   patch '/posts/:id' do
-    @post = Post.find(params[:id])
+    find_post
     @post.update(title: params[:title], image_url: params[:image_url],
     description: params[:description])
     redirect "/posts/#{@post.id}"
   end 
 
   delete '/posts/:id' do
-    @post = Post.find(params[:id])
+    find_post
     @post.destroy
     redirect '/posts'
-  end     
+  end
+
+  private
+
+  def find_post
+    @post = Post.find(params[:id])
+  end 
+
 end 
