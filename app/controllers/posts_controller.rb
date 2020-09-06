@@ -35,7 +35,7 @@ class PostsController < ApplicationController
     if authorized_to_edit?(@post)
       erb :'/posts/edit'
     else 
-      flash[:error] = "Not authorized to edit that post!"
+      flash[:error] = "Not authorized to edit this post!"
       redirect "/posts"
     end 
   end 
