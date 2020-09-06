@@ -7,11 +7,11 @@ class UsersController < ApplicationController
   end
   
   post '/login' do
-    user = User.find_by(email: params[:email])
-      if user && user.authenticate(params[:password])
-        session[:user_id] = user.id #assign to
-        flash[:message] = "Welcome back, #{user.name}!"
-        redirect "/users/#{user.id}"
+    @user = User.find_by(email: params[:email])
+      if @user && @user.authenticate(params[:password])
+        session[:user_id] = @user.id #assign to
+        flash[:message] = "Welcome back, #{@user.name}!"
+        redirect "/users/#{@user.id}"
       else 
         flash[:error] = "Invalid credentials, please try again!"
         redirect '/login'
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   post '/users' do
     if params[:name] != "" && params[:email] != "" && params[:password] != "" && params[:image_url] != "" && params[:bio] != ""
       @user = User.create(params)
-      session[:user_id] = @user.id
+      session[:user_id] = @user.id #logs the user in
       redirect "/users/#{@user.id}"
     else
       flash[:error] = "Please fill out all fields"
