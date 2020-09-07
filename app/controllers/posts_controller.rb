@@ -31,9 +31,13 @@ class PostsController < ApplicationController
   end 
   
   get '/posts/:id/edit' do
-    find_post
-    @post.user == current_user
+    @post = Post.find(params[:id])
+    if authorized_to_edit?(@post)
       erb :'/posts/edit'
+    else 
+      flash[:error] = "Not authorized to edit this post!"
+      redirect "/posts"
+    end 
   end 
 
   patch '/posts/:id' do

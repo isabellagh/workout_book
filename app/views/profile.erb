@@ -1,0 +1,13 @@
+<h3 style="text-align:center"><%= @user.name %></h3>
+  <img src="<%= @user.image_url %>" alt="<%= @user.name %>" class="center" height="auto"; width="50%">
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+    <br><br>
+  <p style="text-align:center"> <strong>Email: <%= @user.email %></strong></p>
+  <p style="text-align:center"> <strong>Bio: <%= @user.bio %></p>

@@ -1,10 +1,18 @@
-<h3><%= @post.title %></h3>
-  <img src="<%= @post.image_url %>" alt="<%= @post.title %>" height="400" width="400">
-<h6>Created At: <%= @post.created_at %></h6>
+<h3 style="text-align:center"><strong><%= @post.title %><strong></h3>
+  <img src="<%= @post.image_url %>" alt="<%= @post.title %>" class="center" height="auto"; width="50%">
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+<h6 style="text-align:center">Created At: <%= @post.created_at %></h6>
   <br><br>
-  <p><%= @post.description %></p>
-  <p>By: <%= @post.user.name %></p>
-
+  <p style="text-align:center"><strong><%= @post.description %></strong></p>
+  <p style="text-align:center"><a href="/profiles"><strong>By: <%= @post.user.name %></strong></a></p>
+  
 <% if authorized_to_edit?(@post) %>
   <a href="/posts/<%= @post.id %>/edit">Edit Post</a>
   <br><br>

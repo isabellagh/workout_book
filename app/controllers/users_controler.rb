@@ -43,15 +43,27 @@ class UsersController < ApplicationController
       erb :index
   end 
 
+  get '/profiles/:id' do
+    find_user
+      erb :profile
+  end 
+
   get '/users/:id/editprofile' do
     find_user
+    if current_user
       erb :edit
+    else 
+      flash[:error] = "Not authorized to edit this profile!"
+      redirect "/users"
+    end 
+    
   end
 
   patch '/users/:id' do
     find_user
     @user.update(name: params[:name], image_url: params[:image_url],
     bio: params[:bio])
+    #binding.pry
       redirect "/users/#{@user.id}"
   end 
   
@@ -60,11 +72,11 @@ class UsersController < ApplicationController
       redirect '/'
   end 
 
-  delete '/users/:id' do
-    find_user
-    @user.destroy
-      redirect '/'
-  end 
+  #delete '/users/:id' do
+  #  find_user
+  #  @user.destroy
+  #    redirect '/'
+  #end 
 
   private
 

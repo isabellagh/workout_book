@@ -1,7 +1,7 @@
 
 <h1>Edit Profile!</h1>
 
-<form class="" action="/users/<%= @user.id %>" method="post">
+<form class="" action="/users/<%= @user.id %>/editprofile" method="post">
   <input type="hidden" name="_method" value="patch">
   <label for="name">Name: </label>
   <input type="string" name="name" value ="<%= @user.name %>">
